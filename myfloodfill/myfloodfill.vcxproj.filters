@@ -27,6 +27,12 @@
     <ClCompile Include="dynInitaliser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="coord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="boundchecker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="matrix.txt">
@@ -44,6 +50,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dynInitaliser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="coord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="boundchecker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

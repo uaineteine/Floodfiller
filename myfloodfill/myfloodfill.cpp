@@ -90,7 +90,7 @@ void intTest()
 	int pos1, pos2;
 	int cor;
 	floodfiller filler = floodfiller(Width, Height);
-	int matrix[MaxLen][MaxLen];
+	int**matrix = dynInitaliser::makeInt(MaxLen, MaxLen, 0);
 
 	fileMatrix.open("matrix.txt");
 	if (!fileMatrix.is_open())
@@ -110,25 +110,18 @@ void intTest()
 
 	cout << endl << "Type the coordinates you want to paint (Row and Column): ";
 	cin >> pos1 >> pos2;
-	if ((filler.verify_start(pos1, pos2)))
-	{
-		cout << endl << "What color you want to paint with (char): ";
-		cin >> cor;
-		int size = filler.floodfill(matrix, pos1, pos2, cor);
-		print_matrix(matrix);
-		cout << endl;
-		cout << "Chamber was " << size << " cells large" << endl;
-		cout << endl;
-	}
-	else
-	{
-		cout << endl << "Invalid Position!" << endl;
-	}
+	cout << endl << "What color you want to paint with (char): ";
+	cin >> cor;
+	int size = filler.floodfill(matrix, pos1, pos2, cor);
+	print_matrix(matrix);
+	cout << endl;
+	cout << "Chamber was " << size << " cells large" << endl;
+	cout << endl;
 }
 
+/*
 void boolTest()
 {
-	/* initialize random seed: */
 	srand(time(NULL));
 
 	int pos1, pos2;
@@ -169,7 +162,6 @@ void boolTest()
 
 void sizeTest()
 {
-	/* initialize random seed: */
 	srand(time(NULL));
 
 	int pos1, pos2;
@@ -335,19 +327,20 @@ void SizeTest()
 	delete[] sizeArr;
 	sizeArr = false;
 }
+*/
 
 /////////////
 //main program
 /////////////
 int main()
 {
-	//intTest();
+	intTest();
 	//boolTest();
 	//sizeTest();
 	//sizeArrayTest();
 	//sizeArrayTestBool();
 	//DynMapTest();
-	SizeTest();
+	//SizeTest();
 	system("PAUSE");
 	return 0;
 }

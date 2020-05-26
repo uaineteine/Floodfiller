@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="boundchecker.cpp" />
+    <ClCompile Include="coord.cpp" />
     <ClCompile Include="dynInitaliser.cpp" />
     <ClCompile Include="floodfiller.cpp" />
     <ClCompile Include="floodfillersize.cpp" />
@@ -162,6 +164,8 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="boundchecker.h" />
+    <ClInclude Include="coord.h" />
     <ClInclude Include="dynInitaliser.h" />
     <ClInclude Include="floodfiller.h" />
     <ClInclude Include="floodfillersize.h" />
