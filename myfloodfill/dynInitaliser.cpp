@@ -68,3 +68,16 @@ void dynInitaliser::del(bool ** map, int width)
 
 	delete[] map;
 }
+
+int ** dynInitaliser::duplicateInt(int ** CurMap, int width, int height)
+{
+	int ** newMap = makeInt(width, height, 0);
+	for (int x = 0; x < width; x++)
+	{
+		for (int y = 0; y < height; y++)
+		{
+			newMap[x][y] = CurMap[x][y];
+		}
+	}
+	return newMap;
+}

@@ -10,5 +10,7 @@ public:
 	static void del(float** map, int width);
 	static void del(int** map, int width);
 	static void del(bool** map, int width);
+	//duplicate
+	static int** duplicateInt(int** CurMap, int width, int height);
 };
 

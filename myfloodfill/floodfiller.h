@@ -19,6 +19,7 @@ public:
 	~floodfiller();
 //Functions
 	int floodfill(int **curMap, int xi, int yi, int newVal);		//return the size of the region
+	int floodfill(bool **curMap, int xi, int yi, bool newVal);		//return the size of the region
 protected:
 	//FIELDS
 	int Width;
@@ -28,6 +29,7 @@ protected:
 	void addToQeue(coord point);
 	void wipeQeue();
 	void paintAndAddToQue(int** curMap, int x, int y, int newVal);
+	void paintAndAddToQue(bool** curMap, int x, int y, bool newVal);
 	void removeFromQeue(int indexToRemove);
 	int qeuelen = 0;
 private:

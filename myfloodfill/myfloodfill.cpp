@@ -119,7 +119,7 @@ void intTest()
 	cout << endl;
 }
 
-/*
+
 void boolTest()
 {
 	srand(time(NULL));
@@ -127,7 +127,7 @@ void boolTest()
 	int pos1, pos2;
 	int cor;
 	floodfiller filler = floodfiller(Width, Height);
-	bool matrix[MaxLen][MaxLen];
+	bool** matrix = dynInitaliser::makeBool(MaxLen, MaxLen, false);
 	for (int x = 0; x < Width; x++)
 	{
 		for (int y = 0; y < Height; y++)
@@ -141,25 +141,18 @@ void boolTest()
 
 	cout << endl << "Type the coordinates you want to paint (Row and Column): ";
 	cin >> pos1 >> pos2;
-	if ((filler.verify_start(pos1, pos2)))
-	{
-		cout << endl << "What color you want to paint with (char): ";
-		cin >> cor;
-		bool newval = false;
-		if (cor == 1)
-			newval = true;
-		int size = filler.floodfill(matrix, pos1, pos2, newval);
-		print_matrix(matrix);
-		cout << endl;
-		cout << "Chamber was " << size << " cells large" << endl;
-		cout << endl;
-	}
-	else
-	{
-		cout << endl << "Invalid Position!" << endl;
-	}
+	cout << endl << "What color you want to paint with (char): ";
+	cin >> cor;
+	bool newval = false;
+	if (cor == 1)
+		newval = true;
+	int size = filler.floodfill(matrix, pos1, pos2, newval);
+	print_matrix(matrix);
+	cout << endl;
+	cout << "Chamber was " << size << " cells large" << endl;
+	cout << endl;
 }
-
+/*
 void sizeTest()
 {
 	srand(time(NULL));
@@ -334,8 +327,8 @@ void SizeTest()
 /////////////
 int main()
 {
-	intTest();
-	//boolTest();
+	//intTest();
+	boolTest();
 	//sizeTest();
 	//sizeArrayTest();
 	//sizeArrayTestBool();

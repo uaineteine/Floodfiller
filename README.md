@@ -1,6 +1,6 @@
-# Floodfill
+# Floodfill2_0
 
-A c++ floodfiller and cell size calculator for 4 connections.
+A c++ floodfiller and cell size calculator for 4-square connections.
 
 ## Getting Started
 
