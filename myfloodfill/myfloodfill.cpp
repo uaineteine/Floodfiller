@@ -152,7 +152,7 @@ void boolTest()
 	cout << "Chamber was " << size << " cells large" << endl;
 	cout << endl;
 }
-/*
+
 void sizeTest()
 {
 	srand(time(NULL));
@@ -160,48 +160,8 @@ void sizeTest()
 	int pos1, pos2;
 	int cor;
 	floodfillersize filler = floodfillersize(Width, Height);
-	bool matrix[MaxLen][MaxLen];
-	for (int x = 0; x < Width; x++)
-	{
-		for (int y = 0; y < Height; y++)
-		{
-			int i = rand() % 2;
-			matrix[x][y] = getFromBool(i);
-		}
-	}
-
-	print_matrix(matrix);
-
-	cout << endl << "Type the coordinates you want to paint (Row and Column): ";
-	cin >> pos1 >> pos2;
-	if ((filler.verify_start(pos1, pos2)))
-	{
-		cout << endl << "What color you want to paint with (char): ";
-		cin >> cor;
-		bool newval = false;
-		if (cor == 1)
-			newval = true;
-		int size = filler.getSize(matrix, pos1, pos2, newval);
-		print_matrix(matrix);
-		cout << endl;
-		cout << "Chamber was " << size << " cells large" << endl;
-		cout << endl;
-	}
-	else
-	{
-		cout << endl << "Invalid Position!" << endl;
-	}
-}
-
-void sizeArrayTest()
-{
-
-	int pos1, pos2;
-	int cor;
-	floodfillersize filler = floodfillersize(Width, Height);
-	int matrix[MaxLen][MaxLen];
+	int** matrix = dynInitaliser::makeInt(MaxLen, MaxLen, 0);
 	ifstream fileMatrix;
-
 	fileMatrix.open("matrix.txt");
 	if (!fileMatrix.is_open())
 	{
@@ -218,53 +178,55 @@ void sizeArrayTest()
 
 	print_matrix(matrix);
 
-	int** sizeArr = filler.getSizeArr(matrix);
+	cout << endl << "Type the coordinates you want to paint (Row and Column): ";
+	cin >> pos1 >> pos2;
+	cout << endl << "What color you want to paint with (char): ";
+	cin >> cor;
+	int size = filler.getSize(matrix, pos1, pos2);
+	print_matrix(matrix);
+	cout << endl;
+	cout << "Chamber was " << size << " cells large" << endl;
+	cout << endl;
+}
+
+void sizeArrayTest()
+{
+	int pos1, pos2;
+	int cor;
+	floodfillersize filler = floodfillersize(Width, Height);
+	int** matrix = dynInitaliser::makeInt(MaxLen, MaxLen, 0);
+	int** sizeArr = dynInitaliser::makeInt(MaxLen, MaxLen, 0);
+	ifstream fileMatrix;
+	fileMatrix.open("matrix.txt");
+	if (!fileMatrix.is_open())
+	{
+		cout << "No file found!" << endl;
+	}
+
+	for (int i = 0; i < Width; i++)
+	{
+		for (int j = 0; j < Height; j++)
+		{
+			fileMatrix >> matrix[i][j];
+		}
+	}
+
+	print_matrix(matrix);
+
+	filler.getSizeArray(matrix, sizeArr, Width, Height);
 	print_matrix(sizeArr);
 
 	//delete array
-	for (int x = 0; x < Width; x++)
-	{
-		delete[] sizeArr[x];
-	}
-	delete[] sizeArr;
-	sizeArr = 0;
+	dynInitaliser::del(sizeArr, Width);//cleaning up
 }
 
+/*
 void sizeArrayTestBool()
 {
 	int pos1, pos2;
 	int cor;
 	floodfillersize filler = floodfillersize(Width, Height);
 	bool matrix[MaxLen][MaxLen];
-	for (int x = 0; x < Width; x++)
-	{
-		for (int y = 0; y < Height; y++)
-		{
-			int i = rand() % 2;
-			matrix[x][y] = getFromBool(i);
-		}
-	}
-
-	print_matrix(matrix);
-
-	int** sizeArr = filler.getSizeArr(matrix);
-	print_matrix(sizeArr);
-
-	//delete array
-	for (int x = 0; x < Width; x++)
-	{
-		delete[] sizeArr[x];
-	}
-	delete[] sizeArr;
-	sizeArr = false;
-}
-
-void DynMapTest()
-{
-	int pos1, pos2;
-	int cor;
-	floodfillersize filler = floodfillersize(Width, Height);
-	bool** matrix = dynInitaliser::makeBool(MaxLen, MaxLen, false);
 	for (int x = 0; x < Width; x++)
 	{
 		for (int y = 0; y < Height; y++)
@@ -328,12 +290,10 @@ void SizeTest()
 int main()
 {
 	//intTest();
-	boolTest();
+	//boolTest();
 	//sizeTest();
-	//sizeArrayTest();
+	sizeArrayTest();
 	//sizeArrayTestBool();
-	//DynMapTest();
-	//SizeTest();
 	system("PAUSE");
 	return 0;
 }
