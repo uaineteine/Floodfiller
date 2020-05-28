@@ -81,3 +81,16 @@ int ** dynInitaliser::duplicateInt(int ** CurMap, int width, int height)
 	}
 	return newMap;
 }
+
+bool ** dynInitaliser::duplicateBool(bool ** CurMap, int width, int height)
+{
+	bool ** newMap = makeBool(width, height, false);
+	for (int x = 0; x < width; x++)
+	{
+		for (int y = 0; y < height; y++)
+		{
+			newMap[x][y] = CurMap[x][y];
+		}
+	}
+	return newMap;
+}

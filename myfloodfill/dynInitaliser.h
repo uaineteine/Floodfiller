@@ -12,5 +12,6 @@ public:
 	static void del(bool** map, int width);
 	//duplicate
 	static int** duplicateInt(int** CurMap, int width, int height);
+	static bool** duplicateBool(bool** CurMap, int width, int height);
 };
 

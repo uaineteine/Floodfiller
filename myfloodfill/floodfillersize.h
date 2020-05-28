@@ -12,6 +12,8 @@ public:
 	~floodfillersize();
 	//get these values only without painting the lists
 	int getSize(int** curMap, int xi, int yi);
+	int getSize(bool** curMap, int xi, int yi);
 	void getSizeArray(int** curMap, int** sizeArr, int lenx, int leny); //return size array
+	void getSizeArray(bool** curMap, int** sizeArr, int lenx, int leny); //return size array
 };
 

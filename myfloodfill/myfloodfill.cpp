@@ -192,7 +192,6 @@ void sizeTest()
 void sizeArrayTest()
 {
 	int pos1, pos2;
-	int cor;
 	floodfillersize filler = floodfillersize(Width, Height);
 	int** matrix = dynInitaliser::makeInt(MaxLen, MaxLen, 0);
 	int** sizeArr = dynInitaliser::makeInt(MaxLen, MaxLen, 0);
@@ -220,46 +219,16 @@ void sizeArrayTest()
 	dynInitaliser::del(sizeArr, Width);//cleaning up
 }
 
-/*
+
 void sizeArrayTestBool()
 {
-	int pos1, pos2;
-	int cor;
-	floodfillersize filler = floodfillersize(Width, Height);
-	bool matrix[MaxLen][MaxLen];
-	for (int x = 0; x < Width; x++)
-	{
-		for (int y = 0; y < Height; y++)
-		{
-			int i = rand() % 2;
-			matrix[x][y] = getFromBool(i);
-		}
-	}
-
-	print_matrix(matrix);
-
-	int** sizeArr = filler.getSizeArr(matrix);
-	print_matrix(sizeArr);
-
-	//delete array
-	for (int x = 0; x < Width; x++)
-	{
-		delete[] sizeArr[x];
-	}
-	delete[] sizeArr;
-	sizeArr = false;
-}
-
-void SizeTest()
-{
-	//make a bit larger for test
-	Width = 40;
-	Height = 40;
+	Width = 6;
+	Height = 6;
 
 	int pos1, pos2;
-	int cor;
 	floodfillersize filler = floodfillersize(Width, Height);
 	bool** matrix = dynInitaliser::makeBool(MaxLen, MaxLen, false);
+	int** sizeArr = dynInitaliser::makeInt(MaxLen, MaxLen, 0);
 	for (int x = 0; x < Width; x++)
 	{
 		for (int y = 0; y < Height; y++)
@@ -271,18 +240,12 @@ void SizeTest()
 
 	print_matrix(matrix);
 
-	int** sizeArr = filler.getSizeArr(matrix);
+	filler.getSizeArray(matrix, sizeArr, Width, Height);
 	print_matrix(sizeArr);
 
-	//delete array
-	for (int x = 0; x < Width; x++)
-	{
-		delete[] sizeArr[x];
-	}
-	delete[] sizeArr;
-	sizeArr = false;
+	//cleanup
+	dynInitaliser::del(sizeArr, Width);
 }
-*/
 
 /////////////
 //main program
@@ -292,8 +255,8 @@ int main()
 	//intTest();
 	//boolTest();
 	//sizeTest();
-	sizeArrayTest();
-	//sizeArrayTestBool();
+	//sizeArrayTest();
+	sizeArrayTestBool();
 	system("PAUSE");
 	return 0;
 }

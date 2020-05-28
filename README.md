@@ -14,7 +14,7 @@ int size = filler.floodfill(matrix, pos1, pos2, cor);
 The following will return the size of an int/boolean 2d matrix but not overwrite that data.
 ```cpp
 floodfillersize filler = floodfillersize(Width, Height);
-int size = filler.getSize(matrix, pos1, pos2, newval);
+int size = filler.getSize(matrix, pos1, pos2);
 ```
 
 * Note this is handled with static memory for performance where the maximum length is given by the maplen.h file.
